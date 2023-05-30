@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Big Bang Challenge</title>
+</head>
+
+<body>
+    <label id="text"></label>
+</body>
+<script type="text/javascript">
+        var array = [];
+        for (let i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                array.push("BIG BANG");
+            }
+            else if (i % 3 == 0) {
+                array.push("BIG");
+            }
+            else if (i % 5 == 0) {
+                array.push("BANG");
+            }
+            else {
+                array.push(i);
+            }
+
+        }
+        json = JSON.stringify(array);
+        var blob = new Blob([json], { type: "application/json" });
+        var downloadLink = document.createElement("a");
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = "output.json";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        document.getElementById("text").innerHTML = "Array: " + array + "<br><br> The file is downlaoded successfully";
+</script>
+
+</html>
